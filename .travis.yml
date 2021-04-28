@@ -1,9 +1,10 @@
-language: java
 jobs:
   include:
     - stage: Run tests
+      language: java
       script : mvn test
     - stage: Deploy staging
+      language: java
       deploy:
         provider: heroku
         api_key: $HEROKU_API
@@ -13,6 +14,7 @@ jobs:
     - stage: Ping staging
       script: 'curl https://spring-demi-integracion-stagin.herokuapp.com/v1/prueba'
     - stage: Deploy
+      language: java
       deploy:
         provider: heroku
         api_key: $HEROKU_API
