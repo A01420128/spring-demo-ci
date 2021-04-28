@@ -8,6 +8,8 @@ jobs:
         provider: heroku
         api_key: $HEROKU_API
         app: spring-demi-integracion-stagin
+        on:
+          branch: main
     - stage: Ping staging
       script: 'curl https://spring-demi-integracion-stagin.herokuapp.com/v1/prueba'
     - stage: Deploy
