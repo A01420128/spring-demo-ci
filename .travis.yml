@@ -1,11 +1,12 @@
 language: java
-include:
-  - stage: Run tests
-    script : mvn test
-  - stage: Deploy
-    deploy:
-      provider: heroku
-      api_key: $HEROKU_API
-      app: spring-demo-integracion
-      on:
-          branch: main
+jobs:
+  include:
+    - stage: Run tests
+      script : mvn test
+    - stage: Deploy
+      deploy:
+        provider: heroku
+        api_key: $HEROKU_API
+        app: spring-demo-integracion
+        on:
+            branch: main
