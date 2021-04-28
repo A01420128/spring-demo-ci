@@ -3,6 +3,13 @@ jobs:
   include:
     - stage: Run tests
       script : mvn test
+    - stage: Deploy staging
+      deploy:
+        provider: heroku
+        api_key: $HEROKU_API
+        app: spring-demi-integracion-stagin
+    - stage: Ping staging
+      script: 'curl https://spring-demi-integracion-stagin.herokuapp.com/v1/prueba'
     - stage: Deploy
       deploy:
         provider: heroku
@@ -10,3 +17,5 @@ jobs:
         app: spring-demo-integracion
         on:
             branch: main
+    - stage: Ping production
+      script: 'curl https://spring-demo-integracion.herokuapp.com/v1/prueba'
